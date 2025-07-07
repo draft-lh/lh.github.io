@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meine Bildergalerie</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background-color: #ffffff;
+      color: #333;
+      text-align: center;
+    }
+    h1 {
+      margin: 2rem 0 1rem;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .gallery img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease;
+      cursor: pointer;
+    }
+    .gallery img:hover {
+      transform: scale(1.02);
+    }
+  </style>
+</head>
+<body>
+  <h1>Meine Bildergalerie</h1>
+  <div class="gallery">
+    <img src="https://via.placeholder.com/400x300?text=Bild+1" alt="Bild 1">
+    <img src="https://via.placeholder.com/400x300?text=Bild+2" alt="Bild 2">
+    <img src="https://via.placeholder.com/400x300?text=Bild+3" alt="Bild 3">
+    <!-- Weitere Bilder hier -->
+  </div>
+</body>
+</html>
