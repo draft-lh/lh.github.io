@@ -9,22 +9,39 @@
         background-color: black;
         color: white; /* Damit Text nicht unsichtbar wird */
         font-family: sans-serif;
-          }
+        margin: 0;
+        padding: 20px;
+      }
     
-      img {
-      max-width: 100%;
-      height: auto;
-      margin: 10px;
-      border-radius: 8px;
-          }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto 2rem auto;
+      padding: 0 2rem;
+    }
+
+    h1 {
+      margin: 0;
+      font-weight: normal;
+    }
+
+    #uhrzeit {
+      font-size: 1rem;
+      font-weight: normal;
+      white-space: nowrap;
+    }
+
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 1rem;
-      padding: 2rem;
+      padding: 0 2rem;
       max-width: 1200px;
       margin: 0 auto;
     }
+
     .gallery img {
       width: 100%;
       height: auto;
@@ -33,18 +50,44 @@
       transition: transform 0.2s ease;
       cursor: pointer;
     }
+
     .gallery img:hover {
       transform: scale(1.02);
     }
   </style>
 </head>
 <body>
-  <h1>/draft/ presented by lh </h1>
+  <header>
+    <h1>/draft/ presented by lh</h1>
+    <div id="uhrzeit">Lade Zeit…</div>
+  </header>
+
   <div class="gallery">
     <img src="bilder/20250527_194105525_iOS.jpg" alt="Bild 1">
     <img src="bilder/IMG_4701.JPG" alt="Bild 2">
-    <img src="20250311_172516451_iOS.jpg" alt="Bild 3">
+    <img src="bilder/20250311_172516451_iOS.jpg" alt="Bild 3">
     <!-- Weitere Bilder hier -->
   </div>
+
+  <script>
+    function aktualisiereUhrzeit() {
+      const jetzt = new Date();
+      const options = {
+        timeZone: 'Europe/Berlin',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric'
+      };
+      const formatter = new Intl.DateTimeFormat('de-DE', options);
+      document.getElementById('uhrzeit').textContent =
+        'Datum & Uhrzeit (deutsche Zeitzone): ' + formatter.format(jetzt);
+    }
+
+    aktualisiereUhrzeit(); // direkt anzeigen
+    setInterval(aktualisiereUhrzeit, 1000); // jede Sekunde aktualisieren
+  </script>
 </body>
 </html>
